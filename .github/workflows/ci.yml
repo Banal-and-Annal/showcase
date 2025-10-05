@@ -24,22 +24,23 @@ jobs:
         with:
           path: |
             ~/.cache
-            node_modules  # You can adjust this to your package manager's cache (e.g., for npm or yarn)
-          key: cache-c103937-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }} # Use a unique key based on package-lock
+            node_modules  # Adjust this if you're using a different package manager or cache folder
+          key: cache-c103937-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             cache-c103937-${{ runner.os }}-
             cache-c103937-
 
       # Step 3: Cache Hit/Miss Result
       - name: Cache Hit/Miss Result
-        run: echo "Cache hit/miss: ${{ steps.prime-cache-c103937.outputs.cache-hit }}"
+        run: |
+          echo "Cache hit/miss: ${{ steps.prime-cache-c103937.outputs.cache-hit }}"
 
-      # Step 4: Install dependencies (for example, for Node.js)
+      # Step 4: Install dependencies (example for Node.js)
       - name: Install dependencies
         run: |
           npm install
 
-      # Step 5: Run tests (as an example, replace with your test command)
+      # Step 5: Run tests (example for Node.js)
       - name: Run tests
         run: |
           npm test
