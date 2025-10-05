@@ -1,6 +1,5 @@
 name: CI Workflow with Caching
 
-# Trigger on push and pull request to the main branch
 on:
   push:
     branches:
@@ -13,7 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Define the steps in the job
     steps:
       # Step 1: Checkout the repository code
       - name: Checkout code
@@ -31,8 +29,8 @@ jobs:
           restore-keys: |
             cache-c103937-${{ runner.os }}-
             cache-c103937-
-      
-      # Step 3: Display whether the cache was a hit or miss
+
+      # Step 3: Cache Hit/Miss Result
       - name: Cache Hit/Miss Result
         run: echo "Cache hit/miss: ${{ steps.prime-cache-c103937.outputs.cache-hit }}"
 
