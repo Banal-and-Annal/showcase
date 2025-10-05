@@ -1,22 +1,10 @@
 name: Example Workflow with Email
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
       - name: 23f2001630@ds.study.iitm.ac.in
         run: echo "Hello, world!"
-
-      - name: Another Step
-        run: echo "This is a different step!"
